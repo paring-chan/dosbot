@@ -11,6 +11,8 @@ export function getCommandList() : Array<Command> {
 
     require('./general').default(registerCommand)
     require('./dev').default(registerCommand)
+    require('./utils').default(registerCommand)
+    require('./music').default(registerCommand)
 
     return commands
 }

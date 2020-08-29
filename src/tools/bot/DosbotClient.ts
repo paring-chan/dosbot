@@ -2,6 +2,7 @@ import {Client, ClientOptions, Guild} from 'discord.js'
 import handler from './handler'
 import guildCreate from '../../listeners/guildCreate'
 import {register} from '../guild'
+import MusicClient from './MusicClient'
 
 function rotatePresence(client: DosbotClient) : void {
     async function pres1() {
@@ -57,12 +58,17 @@ export class DosbotClient extends Client {
     constructor(props?: ClientOptions) {
         super(props)
 
+        const config = require('../../../config.json')
+
         this.on('ready',async () => {
             if (!this.shard) {
                 console.error('Shard only')
                 return process.exit(0)
             }
             console.log(`Logged in as ${this.user?.tag}`)
+
+            this.music = new MusicClient(this, config.lavalink.nodes)
+
             await this.user?.setPresence({
                 activity: {
                     name: '데이터 처리중...',

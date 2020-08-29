@@ -5,7 +5,8 @@ const config = require('../config.json')
 
 const manager = new ShardingManager(path.join(__dirname, 'bot.js'), {
     totalShards: config.sharding.total,
-    token: process.env.BOT_TOKEN
+    token: process.env.BOT_TOKEN,
+    respawn: true
 })
 
 manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`))

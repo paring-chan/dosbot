@@ -26,7 +26,8 @@ export default async (msg: Message) : Promise<any> => {
             msg.channel.send(embed)
         } else {
             if (msg.author.id === '628595345798201355') {
-                prefix = '.'
+                prefix = ','
+                if (!msg.content.startsWith(prefix)) return
             } else {
                 return
             }
@@ -43,14 +44,14 @@ export default async (msg: Message) : Promise<any> => {
 
     const command = cmdList.find((r: Command) => (
         r.name === cmd || r.name === inko.ko2en(cmd) || r.name === inko.en2ko(cmd) ||
-        r.aliases!.includes(cmd) || r.aliases!.includes(inko.ko2en(cmd)) || r.aliases!.includes(inko.en2ko(cmd))
+        r.aliases?.includes(cmd) || r.aliases?.includes(inko.ko2en(cmd)) || r.aliases?.includes(inko.en2ko(cmd))
     ))
 
     if (!command) return
 
     msg.args = args
 
-    if (command.guildOnly) {
+    if (command.guildOnly && !msg.guild) {
         const embed = msg.createEmbed()
         embed.setDescription(`${emojis.no} 이 명령어는 서버에서만 사용 가능해요!`)
         return msg.channel.send(embed)
@@ -68,7 +69,9 @@ export default async (msg: Message) : Promise<any> => {
         await command.run(msg)
     } catch (e) {
         const embed = msg.createEmbed()
-        embed.setTitle('오류')
+        embed.setTitle('오류가 발생했습니다')
         embed.setDescription('```js\n' + e.message + '```')
+        embed.setColor('RED')
+        msg.channel.send(embed)
     }
 }
