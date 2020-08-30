@@ -15,18 +15,10 @@ class Music extends Component<any, any> {
         if (this.props.pageProps.guild) {
             if (this.props.pageProps.guild.config) {
                 this.state = {
-                    play: !this.props.pageProps.guild.config.disabledCommands.includes('play'),
-                    skip: !this.props.pageProps.guild.config.disabledCommands.includes('skip'),
-                    stop: !this.props.pageProps.guild.config.disabledCommands.includes('stop'),
+                    qrgen: !this.props.pageProps.guild.config.disabledCommands.includes('qrgen'),
                     items: [{
-                        name: '재생',
-                        id: 'play'
-                    },{
-                        name: '정지',
-                        id: 'stop'
-                    },{
-                        name: '스킵',
-                        id: 'skip'
+                        name: 'QR코드',
+                        id: 'qrgen'
                     }]
                 }
             } else {
