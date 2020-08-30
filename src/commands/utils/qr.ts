@@ -4,6 +4,7 @@ import qrcode from 'qrcode'
 
 const qr: Command = {
     name: 'qr코드',
+    id: 'qrgen',
     aliases: ['qr'],
     async run(msg: Message): Promise<any> {
         const embed = msg.createEmbed()

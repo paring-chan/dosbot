@@ -4,6 +4,7 @@ import emojis from '../../tools/emojis'
 
 const skip: Command = {
     name: '스킵',
+    id: 'skip',
     aliases: ['skip'],
     guildOnly: true,
     group: 'music',

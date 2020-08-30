@@ -6,7 +6,8 @@ type Command = {
     run(msg: Message) : Promise<any>,
     guildOnly?: boolean,
     ownerOnly?: boolean,
-    group: string
+    group: string,
+    id: string
 }
 
 export default Command

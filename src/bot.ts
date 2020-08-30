@@ -2,6 +2,7 @@ import 'dotenv/config'
 import {DosbotClient} from './tools/bot/DosbotClient'
 import {connect} from 'mongoose'
 import {Message, MessageEmbed} from 'discord.js'
+import './typings'
 
 const config = require('../config.json')
 

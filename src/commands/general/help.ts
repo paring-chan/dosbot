@@ -1,10 +1,11 @@
 import Command from '../../types/Command'
 import {Message} from 'discord.js'
-import {getCommandList} from "../index";
+import {getCommandList} from '../index'
 
 const help: Command = {
     name: '도움말',
     aliases: ['help', '도움'],
+    id: 'help',
     group: 'general',
     async run(msg: Message) {
         const commands = getCommandList()

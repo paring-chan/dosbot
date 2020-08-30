@@ -3,13 +3,21 @@ import {Message, MessageEmbed, Util} from 'discord.js'
 import emojis from '../../tools/emojis'
 import {spawnPlayer} from './util'
 import {Track, Utils} from 'erela.js'
+import '../../typings'
 
 const play: Command = {
+    id: 'play',
     name: '재생',
     group: 'music',
     aliases: ['play', 'p'],
     guildOnly: true,
     async run(msg: Message): Promise<any> {
+        if (!msg.args.length) {
+            const embed = msg.createEmbed()
+            embed.setDescription('```ini\n' + `[명령어 사용법]
+${msg.prefix}재생 <제목/url>` + '```')
+            return msg.channel.send(embed)
+        }
         if (!msg.member!.voice.channel) {
             const embed = msg.createEmbed()
             embed.setDescription(`${emojis.no} 음성 채널에 들어가주세요!`)

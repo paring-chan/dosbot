@@ -5,6 +5,7 @@ import exec from '../../tools/promises/exec'
 const shellCommand: Command = {
     name: 'shell',
     group: 'dev',
+    id: 'shell',
     aliases: ['exec', 'exc'],
     guildOnly: false,
     ownerOnly: true,

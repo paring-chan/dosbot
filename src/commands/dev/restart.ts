@@ -4,6 +4,7 @@ import {Message} from 'discord.js'
 const restart : Command = {
     name: 'rs',
     group: 'dev',
+    id: 'restart',
     ownerOnly: true,
     async run(msg: Message): Promise<any> {
         const embed = msg.createEmbed()

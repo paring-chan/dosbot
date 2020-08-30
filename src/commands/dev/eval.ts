@@ -5,6 +5,7 @@ const evalCmd : Command = {
     name: 'eval',
     aliases: ['sc'],
     group: 'dev',
+    id: 'eval',
     ownerOnly: true,
     async run(msg: Message): Promise<any> {
         const embed = msg.createEmbed()
