@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {withGuild} from '../../../utils/init'
 import Layout from '../../../components/Layout'
 import Router from 'next/router'
-import {Card, CardContent, Grid, ListItem, ListItemSecondaryAction, ListItemText, Switch} from '@material-ui/core'
+import {Card, CardContent, Grid, List, ListItem, ListItemSecondaryAction, ListItemText, Switch} from '@material-ui/core'
 
 class Music extends Component<any, any> {
     componentDidMount(): any {
@@ -18,6 +18,11 @@ class Music extends Component<any, any> {
                     play: !this.props.pageProps.guild.config.disabledCommands.includes('play'),
                     skip: !this.props.pageProps.guild.config.disabledCommands.includes('skip'),
                     stop: !this.props.pageProps.guild.config.disabledCommands.includes('stop'),
+                    forward: !this.props.pageProps.guild.config.disabledCommands.includes('forward'),
+                    backward: !this.props.pageProps.guild.config.disabledCommands.includes('backward'),
+                    seek: !this.props.pageProps.guild.config.disabledCommands.includes('seek'),
+                    nowplaying: !this.props.pageProps.guild.config.disabledCommands.includes('nowplaying'),
+                    volume: !this.props.pageProps.guild.config.disabledCommands.includes('volume'),
                     items: [{
                         name: '재생',
                         id: 'play'
@@ -27,6 +32,21 @@ class Music extends Component<any, any> {
                     },{
                         name: '스킵',
                         id: 'skip'
+                    },{
+                        name: '되감기',
+                        id: 'backward'
+                    },{
+                        name: '빨리감기',
+                        id: 'forward'
+                    },{
+                        name: '시간이동',
+                        id: 'seek'
+                    },{
+                        name: '현재곡',
+                        id: 'nowplaying'
+                    },{
+                        name: '볼륨',
+                        id: 'volume'
                     }]
                 }
             } else {
@@ -62,12 +82,14 @@ class Music extends Component<any, any> {
                                     this.state.items.map((item, i) => (
                                         <Grid key={i} item xs={12} md={4}>
                                             <Card variant="outlined">
-                                                <ListItem>
-                                                    <ListItemText primary={item.name}/>
-                                                    <ListItemSecondaryAction>
-                                                        <Switch checked={this.state[item.id]} onClick={this.update(item.id)}/>
-                                                    </ListItemSecondaryAction>
-                                                </ListItem>
+                                                <List>
+                                                    <ListItem>
+                                                        <ListItemText primary={item.name}/>
+                                                        <ListItemSecondaryAction>
+                                                            <Switch checked={this.state[item.id]} onClick={this.update(item.id)}/>
+                                                        </ListItemSecondaryAction>
+                                                    </ListItem>
+                                                </List>
                                             </Card>
                                         </Grid>
                                     ))

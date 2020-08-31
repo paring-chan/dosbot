@@ -23,7 +23,10 @@ class Layout extends Component<any> {
 
         return (
             <>
-                <AppBar>
+                <AppBar style={{
+                    boxShadow: 'none',
+                    background: this.props.transparent && 'transparent'
+                }}>
                     <Toolbar>
                         <Link href="/">
                             <Typography style={{
@@ -73,11 +76,13 @@ class Layout extends Component<any> {
                         }
                     </Toolbar>
                 </AppBar>
-                <Toolbar style={{
-                    marginBottom: 10
-                }}/>
-                <Container>
-                    {
+                {
+                    !this.props.noToolbar && <Toolbar style={{
+                        marginBottom: 10
+                    }}/>
+                }
+                {
+                    this.props.noContainer ?
                         this.props.noCard ?
                             this.props.children
                             : <Card>
@@ -85,8 +90,18 @@ class Layout extends Component<any> {
                                     {this.props.children}
                                 </CardContent>
                             </Card>
-                    }
-                </Container>
+                        : <Container>
+                            {
+                                this.props.noCard ?
+                                    this.props.children
+                                    : <Card>
+                                        <CardContent>
+                                            {this.props.children}
+                                        </CardContent>
+                                    </Card>
+                            }
+                        </Container>
+                }
             </>
         )
     }

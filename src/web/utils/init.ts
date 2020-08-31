@@ -32,7 +32,7 @@ export async function withGuilds (ctx) {
     }
 }
 
-export async function withGuild(ctx: GetServerSidePropsContext) {
+export async function withGuild(ctx: GetServerSidePropsContext) : Promise<any> {
     const fetched = await withGuilds(ctx)
     if (!fetched.props.guilds) {
         return {

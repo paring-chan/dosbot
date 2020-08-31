@@ -86,5 +86,8 @@ export class DosbotClient extends Client {
         this.on('guildCreate', guildCreate)
 
         this.on('message', handler)
+
+        this.on('messageReactionAdd', require('../../listeners/nowPlayingReaction').default)
+        this.on('messageReactionRemove', require('../../listeners/nowPlayingReaction').default)
     }
 }

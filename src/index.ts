@@ -121,7 +121,7 @@ manager.spawn().then(async () => {
     })
 
 
-    app1.get('*', (req, res) => {
+    app1.all('*', (req, res) => {
         handle(req, res)
     })
 

@@ -66,6 +66,36 @@ class Dashboard extends Component<any> {
                                     </Typography>
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/general" as={`/servers/${guild.id}/general`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            일반
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <Dns/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/dm" as={`/servers/${guild.id}/dm`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            DM 보내기
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <Dns/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
                                             <Link href="/servers/[id]/music" as={`/servers/${guild.id}/music`}>
                                                 <Card variant="outlined" style={{
                                                     cursor: 'pointer'

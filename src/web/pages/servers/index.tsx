@@ -28,7 +28,7 @@ class Servers extends Component<any> {
                                         }}>
                                             <ListItemIcon>
                                                 <Avatar
-                                                    src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`}>
+                                                    src={guild.icon && `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}`}>
                                                     {
                                                         !guild.icon && <Dns/>
                                                     }

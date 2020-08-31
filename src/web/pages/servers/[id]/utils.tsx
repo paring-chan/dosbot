@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {withGuild} from '../../../utils/init'
 import Layout from '../../../components/Layout'
 import Router from 'next/router'
-import {Card, CardContent, Grid, ListItem, ListItemSecondaryAction, ListItemText, Switch} from '@material-ui/core'
+import {Card, CardContent, Grid, List, ListItem, ListItemSecondaryAction, ListItemText, Switch} from '@material-ui/core'
 
-class Music extends Component<any, any> {
+class Utils extends Component<any, any> {
     componentDidMount(): any {
         if (this.props.pageProps.redirectTo) {
             Router.push(this.props.pageProps.redirectTo)
@@ -54,12 +54,14 @@ class Music extends Component<any, any> {
                                     this.state.items.map((item, i) => (
                                         <Grid key={i} item xs={12} md={4}>
                                             <Card variant="outlined">
-                                                <ListItem>
-                                                    <ListItemText primary={item.name}/>
-                                                    <ListItemSecondaryAction>
-                                                        <Switch checked={this.state[item.id]} onClick={this.update(item.id)}/>
-                                                    </ListItemSecondaryAction>
-                                                </ListItem>
+                                                <List>
+                                                    <ListItem>
+                                                        <ListItemText primary={item.name}/>
+                                                        <ListItemSecondaryAction>
+                                                            <Switch checked={this.state[item.id]} onClick={this.update(item.id)}/>
+                                                        </ListItemSecondaryAction>
+                                                    </ListItem>
+                                                </List>
                                             </Card>
                                         </Grid>
                                     ))
@@ -75,4 +77,4 @@ class Music extends Component<any, any> {
 
 export const getServerSideProps = withGuild
 
-export default Music
+export default Utils

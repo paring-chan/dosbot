@@ -1,5 +1,5 @@
 import {ErelaClient, IErelaOptions, INodesOptions, Utils} from 'erela.js'
-import {Client, MessageEmbed} from 'discord.js'
+import {Client, Collection, MessageEmbed} from 'discord.js'
 
 export default class MusicClient extends ErelaClient {
     constructor(client?: Client, nodes?: INodesOptions[], options?: IErelaOptions) {
@@ -25,5 +25,6 @@ export default class MusicClient extends ErelaClient {
         this.on('queueEnd', player => {
             this.players.destroy(player.guild.id)
         })
+        this.nowPlayingMessages = new Collection<string, string>()
     }
 }
