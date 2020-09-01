@@ -7,7 +7,6 @@ import '../styles/styles.css'
 import 'react-awesome-slider/dist/styles.css'
 import 'react-awesome-slider/dist/custom-animations/fall-animation.css'
 
-
 export default class RootApp extends App {
     render(): JSX.Element {
         return (

@@ -1,10 +1,14 @@
 import {ShardingManager} from 'discord.js'
 import React from 'react'
+import {DosGuild} from '../models/guild'
+import {Model} from 'mongoose'
 
 declare module 'http' {
     interface IncomingMessage {
         user: any
-        models: any
+        models: {
+            Guild: Model<DosGuild>
+        }
     }
 }
 

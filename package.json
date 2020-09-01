@@ -17,6 +17,7 @@
     "express-session": "^1.17.1",
     "fullpage.js": "^3.0.9",
     "inko": "^1.1.1",
+    "material-table": "^1.69.0",
     "mongoose": "^5.10.2",
     "next": "^9.5.2",
     "nextjs-progressbar": "^0.0.6",
@@ -26,6 +27,7 @@
     "qrcode": "^1.4.4",
     "react": "^16.13.1",
     "react-awesome-slider": "^4.1.0",
+    "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
     "react-fullpage": "^0.1.19"
   },

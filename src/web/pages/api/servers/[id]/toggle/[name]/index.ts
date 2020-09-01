@@ -19,11 +19,11 @@ export default async (req: Request, res: Response) => {
 
     let result
 
-    if (data.disabledCommands.includes(req.query.name)) {
-        data.disabledCommands.splice(data.disabledCommands.indexOf(req.query.name), 1)
+    if (data.disabledCommands.includes(<string>req.query.name)) {
+        data.disabledCommands.splice(data.disabledCommands.indexOf(<string>req.query.name), 1)
         result = false
     } else {
-        data.disabledCommands.push(req.query.name)
+        data.disabledCommands.push(<string>req.query.name)
         result = true
     }
 

@@ -1,4 +1,4 @@
-import {Client, ClientOptions, Guild} from 'discord.js'
+import {Client, ClientOptions} from 'discord.js'
 import handler from './handler'
 import guildCreate from '../../listeners/guildCreate'
 import {register} from '../guild'
@@ -89,5 +89,8 @@ export class DosbotClient extends Client {
 
         this.on('messageReactionAdd', require('../../listeners/nowPlayingReaction').default)
         this.on('messageReactionRemove', require('../../listeners/nowPlayingReaction').default)
+
+        this.on('messageReactionAdd', (...args) => require('../../listeners/reactionRole').onAdd(...args))
+        this.on('messageReactionRemove', (...args) => require('../../listeners/reactionRole').onRemove(...args))
     }
 }
