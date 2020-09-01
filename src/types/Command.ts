@@ -1,4 +1,4 @@
-import {Message} from 'discord.js'
+import {Message, PermissionString} from 'discord.js'
 
 type Command = {
     name: string,
@@ -7,7 +7,8 @@ type Command = {
     guildOnly?: boolean,
     ownerOnly?: boolean,
     group: string,
-    id: string
+    id: string,
+    permissions?: PermissionString[]
 }
 
 export default Command

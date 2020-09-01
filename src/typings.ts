@@ -1,4 +1,4 @@
-import {MessageEmbed} from 'discord.js'
+import {Collection, Message, MessageEmbed} from 'discord.js'
 import {ErelaClient} from 'erela.js'
 
 declare module 'discord.js' {
@@ -9,6 +9,13 @@ declare module 'discord.js' {
     }
     interface Client {
         music: ErelaClient
+    }
+}
+
+
+declare module 'erela.js' {
+    interface ErelaClient {
+        nowPlayingMessages: Collection<string, string>
     }
 }
 

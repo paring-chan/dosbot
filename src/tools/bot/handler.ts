@@ -1,7 +1,7 @@
 import {Message} from 'discord.js'
 import Inko from 'inko'
 import * as models from '../../models'
-import { DosGuild } from '../../models/guild'
+import {DosGuild} from '../../models/guild'
 import Command from '../../types/Command'
 import emojis from '../emojis'
 
@@ -18,7 +18,7 @@ export default async (msg: Message): Promise<any> => {
         guildConfig = await models.Guild.findOne({id: msg.guild.id})
     }
 
-    let prefix : string
+    let prefix: string
     if (msg.guild) {
         prefix = (guildConfig!.prefix || '다스야 ')
     } else {
@@ -74,22 +74,42 @@ export default async (msg: Message): Promise<any> => {
         return msg.channel.send(embed)
     }
 
-    if (command.ownerOnly && !config.owners.includes(msg.author.id)) {
-        const embed = msg.createEmbed()
-        embed.setFooter('')
-        embed.setDescription(`${emojis.no} 이 명령어는 봇 개발자만 사용 가능해요!`)
-        return msg.channel.send(embed)
-    }
+    if (command.permissions) {
+        if (!msg.guild) {
+            const embed = msg.createEmbed()
+            embed.setDescription(`${emojis.no} 이 명령어는 서버에서만 사용 가능해요!`)
+            embed.setFooter('')
+            return msg.channel.send(embed)
+        }
+        if (!msg.member!.permissions.has(command.permissions!)) {
+            const embed = msg.createEmbed()
+            embed.setDescription(`${emojis.no} 이 명령어를 사용하려면 다음 권한(들)이 필요해요 \`\`\`
+${command.permissions.join(', ')}\`\`\``)
+            embed.setFooter('')
+            return msg.channel.send(embed)
+        }
 
-    console.log(`[${msg.author.tag}] ${msg.content.replace('\n', ' ')}`)
+        if (command.ownerOnly && !config.owners.includes(msg.author.id)) {
+            const embed = msg.createEmbed()
+            embed.setFooter('')
+            embed.setDescription(
+                `${emojis.no} 이 명령어는 봇 개발자만 사용 가능해요!`
+            )
+            return msg.channel.send(embed)
+        }
 
-    try {
-        await command.run(msg)
-    } catch (e) {
-        const embed = msg.createEmbed()
-        embed.setTitle('오류가 발생했습니다')
-        embed.setDescription('```js\n' + e.message + '```')
-        embed.setColor('RED')
-        msg.channel.send(embed)
+        console.log(
+            `[${msg.author.tag}] ${msg.content.replace('\n', ' ')}`
+        )
+
+        try {
+            await command.run(msg)
+        } catch (e) {
+            const embed = msg.createEmbed()
+            embed.setTitle('오류가 발생했습니다')
+            embed.setDescription('```js\n' + e.message + '```')
+            embed.setColor('RED')
+            msg.channel.send(embed)
+        }
     }
 }

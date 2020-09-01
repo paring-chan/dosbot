@@ -3,7 +3,7 @@ import {withGuild} from '../../../utils/init'
 import Layout from '../../../components/Layout'
 import Router from 'next/router'
 import {Avatar, Card, CardContent, CardHeader, Grid, Typography} from '@material-ui/core'
-import {Build, Dns, MusicNote} from '@material-ui/icons'
+import {BorderOuterTwoTone, Build, Dns, MusicNote} from '@material-ui/icons'
 import Link from 'next/link'
 
 class Dashboard extends Component<any> {
@@ -62,9 +62,69 @@ class Dashboard extends Component<any> {
                                         marginBottom: 10,
                                         marginTop: 10
                                     }} variant="h4">
-                                        서버 설정
+                                        서버 관리
                                     </Typography>
                                     <Grid container spacing={3}>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/general" as={`/servers/${guild.id}/general`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            일반
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <Dns/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/dm" as={`/servers/${guild.id}/dm`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            DM 보내기
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <Dns/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/reactionrole" as={`/servers/${guild.id}/reactionrole`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            반응 역할
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <BorderOuterTwoTone/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/chnmsg" as={`/servers/${guild.id}/chnmsg`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            채널에 메시지 전송
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <BorderOuterTwoTone/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
                                         <Grid item xs={12} md={4}>
                                             <Link href="/servers/[id]/music" as={`/servers/${guild.id}/music`}>
                                                 <Card variant="outlined" style={{

@@ -1,6 +1,10 @@
 import {Request, Response} from 'express'
 
 export default async (req: Request, res: Response) => {
+    if (req.method !== 'POST') {
+        res.status(405).json({error: 'Method must be POST'})
+    }
+
     if (!req.user) return res.status(401).json({
         error: 'Unauthorized'
     })
@@ -17,17 +21,17 @@ export default async (req: Request, res: Response) => {
 
     const data = await req.models.Guild.findOne({id: req.query.id})
 
-    let result
+    const allowed = ['prefix']
 
-    if (data.disabledCommands.includes(<string>req.query.name)) {
-        data.disabledCommands.splice(data.disabledCommands.indexOf(<string>req.query.name), 1)
-        result = false
-    } else {
-        data.disabledCommands.push(<string>req.query.name)
-        result = true
-    }
+    Object.keys(req.body).forEach(key => {
 
-    await req.models.Guild.update({id: req.query.id}, data)
+        console.log(`[UPDATE] guild: ${req.query.id} key: ${key} from: ${data[key]} to: ${req.body[key]}`)
+        if (allowed.includes(key)) {
+            data[key] = req.body[key]
+        }
+    })
 
-    res.json({result})
+    await data.save()
+
+    res.json({result: data})
 }

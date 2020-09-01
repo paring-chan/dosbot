@@ -4,7 +4,9 @@ export function getCommandList() : Array<Command> {
     const commands : Array<Command> = []
 
     function registerCommand(cmd: Command) : boolean {
+        if (!cmd) return false
         if (!cmd.aliases) cmd.aliases = []
+        if (!cmd.permissions) cmd.permissions = []
         commands.push(cmd)
         return true
     }
