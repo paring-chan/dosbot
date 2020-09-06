@@ -155,6 +155,21 @@ class Dashboard extends Component<any> {
                                                 </Card>
                                             </Link>
                                         </Grid>
+                                        <Grid item xs={12} md={4}>
+                                            <Link href="/servers/[id]/inout" as={`/servers/${guild.id}/inout`}>
+                                                <Card variant="outlined" style={{
+                                                    cursor: 'pointer'
+                                                }}>
+                                                    <CardHeader title={
+                                                        <Typography variant="h6">
+                                                            입장/퇴장 메시지
+                                                        </Typography>
+                                                    } avatar={<Avatar>
+                                                        <Build/>
+                                                    </Avatar>}/>
+                                                </Card>
+                                            </Link>
+                                        </Grid>
                                     </Grid>
                                 </CardContent>
                             </Card>
