@@ -91,6 +91,10 @@ export class DosbotClient extends Client {
         this.on('messageReactionRemove', require('../../listeners/nowPlayingReaction').default)
 
         this.on('messageReactionAdd', (...args) => require('../../listeners/reactionRole').onAdd(...args))
+
         this.on('messageReactionRemove', (...args) => require('../../listeners/reactionRole').onRemove(...args))
+
+        this.on('guildMemberAdd', (...args) => require('../../listeners/jqmsg').join(...args))
+        this.on('guildMemberAdd', (...args) => require('../../listeners/jqmsg').leave(...args))
     }
 }

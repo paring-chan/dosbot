@@ -5,4 +5,5 @@ export default (r: register) => {
     r(require('./reload').default)
     r(require('./eval').default)
     r(require('./restart').default)
+    r(require('./announce').default)
 }
