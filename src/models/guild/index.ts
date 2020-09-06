@@ -9,7 +9,11 @@ export interface DosGuild extends Document {
     id: string,
     prefix: string,
     disabledCommands: Array<string>,
-    reactionRoles: Array<ReactionRole>
+    reactionRoles: Array<ReactionRole>,
+    inMsg: string|undefined,
+    outMsg: string|undefined,
+    inChn: string|undefined,
+    outChn: string|undefined
 }
 
 export const guildSchema = new Schema({
@@ -25,6 +29,22 @@ export const guildSchema = new Schema({
     reactionRoles: {
         default: [],
         type: Array
+    },
+    inMsg: {
+        default: '',
+        type: String
+    },
+    outMsg: {
+        default: '',
+        type: String
+    },
+    inChn: {
+        default: '',
+        type: String
+    },
+    outChn: {
+        default: '',
+        type: String
     }
 })
 

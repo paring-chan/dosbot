@@ -45,6 +45,7 @@ class Index extends Component<any> {
                                 </Button>
                             </Grid>
                         </Grid>
+                        <Typography align="center" style={{color: '#fff'}}>다스봇은 <span style={{color: '#ff0000'}}>&hearts;</span> 프로젝트입니다</Typography>
                     </div>
                 </AwesomeSlider>
             </Layout>
