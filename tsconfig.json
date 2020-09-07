@@ -76,8 +76,7 @@
     "forceConsistentCasingInFileNames": true
     /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": [
-    "**/*.pug",
-    "src"
+  "exclude": [
+    "src/web"
   ]
 }

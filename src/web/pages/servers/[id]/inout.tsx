@@ -75,9 +75,6 @@ class ChannelMSG extends Component<any, any> {
         if (!this.state.inChannel) {
             return alert('채널을 선택해주세요')
         }
-        if (this.state.inContent === '') {
-            return alert('메시지를 입력해주세요')
-        }
         if (this.state.inContent.length > 1000) {
             return alert('메시지는 최대 1000글자입니다.')
         }
@@ -107,9 +104,6 @@ class ChannelMSG extends Component<any, any> {
     async submitOut() {
         if (!this.state.outChannel) {
             return alert('채널을 선택해주세요')
-        }
-        if (this.state.outContent === '') {
-            return alert('메시지를 입력해주세요')
         }
         if (this.state.outContent.length > 1000) {
             return alert('메시지는 최대 1000글자입니다.')
@@ -234,8 +228,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const req: Request = ctx.req as Request
 
     const guild = guildData.props.guild
-
-    console.log(guild.config)
 
     return {
         props: {

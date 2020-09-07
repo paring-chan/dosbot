@@ -22,11 +22,6 @@ export default async (req: Request, res: Response) => {
             error: 'Unauthorized'
         })
     }
-
-
-    if (!req.body.content) {
-        return res.json({error: 'content must not be empty'})
-    }
     if (!req.body.channel) {
         return res.json({error: 'channel must not be empty'})
     }

@@ -29,7 +29,8 @@ export default async (msg: Message): Promise<any> => {
         if (msg.content.match(new RegExp(`^<@(!)?${msg.client.user!.id}>`))) {
             const embed = msg.createEmbed()
             embed.setThumbnail(msg.client.user!.avatarURL({dynamic: true})!)
-            embed.setDescription(`이 서버의 접두사는 \`${prefix}\` 입니다!`)
+            embed.setDescription(`이 서버의 접두사는 \`${prefix}\` 입니다!
+${msg.guild && `[[대시보드]](http://test.pikodev.me:3050/servers/${msg.guild!.id})`} [[오픈소스 프로젝트]](https://git.pikodev.me/piko/dosbot) [[웹사이트]](http://test.pikodev.me:3050/)`)
             msg.channel.send(embed)
         } else {
             if (msg.author.id === '628595345798201355') {
