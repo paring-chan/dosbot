@@ -1,0 +1,28 @@
+{
+  "sharding": {
+    "total": 2
+  },
+  "db": "",
+  "owners": [
+    "416916345456689162",
+    "628595345798201355"
+  ],
+  "lavalink": {
+    "nodes": [
+      {
+        "host": "localhost",
+        "port": 2333,
+        "password": "youshallnotpass"
+      }
+    ]
+  },
+  "web": {
+    "port": 3050,
+    "oauth2": {
+      "clientID": "",
+      "clientSecret": "",
+      "callback": ""
+    },
+    "sessionSecret": ""
+  }
+}
