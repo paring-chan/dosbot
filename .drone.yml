@@ -8,3 +8,5 @@ steps:
       - yarn
       - yarn eslint
       - yarn tsc
+      - cd src/web
+      - yarn next build
