@@ -235,8 +235,6 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 
     const guild = guildData.props.guild
 
-    console.log(guild.config)
-
     return {
         props: {
             ...guildData.props,
