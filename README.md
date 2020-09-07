@@ -16,7 +16,7 @@ sudo docker run -p 27017:27017 --name mongodb mongo
 java -jar Lavalink.jar
 ```
 
-3: pm2 섳치
+3: pm2 설치
 ```
 npm i -g pm2
 ```
