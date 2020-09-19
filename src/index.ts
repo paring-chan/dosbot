@@ -29,8 +29,7 @@ declare global {
     }
 }
 
-manager.spawn();
-    
+manager.spawn().then    
 (async () => {
     await mongoose.connect(config.db, {
         useNewUrlParser: true,
@@ -128,4 +127,4 @@ manager.spawn();
     })
 
     app1.listen(config.web.port)
-})()
+})
