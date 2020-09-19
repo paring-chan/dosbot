@@ -29,7 +29,7 @@ declare global {
     }
 }
 
-manager.spawn()
+manager.spawn();
     
 (async () => {
     await mongoose.connect(config.db, {
