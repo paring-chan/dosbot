@@ -29,7 +29,9 @@ declare global {
     }
 }
 
-manager.spawn().then(async () => {
+manager.spawn()
+    
+(async () => {
     await mongoose.connect(config.db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -126,4 +128,4 @@ manager.spawn().then(async () => {
     })
 
     app1.listen(config.web.port)
-})
+})()
